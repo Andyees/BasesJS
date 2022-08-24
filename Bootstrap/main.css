@@ -1,0 +1,13 @@
+.colorblue{
+    background-color: aqua;
+    height: 600px;
+}
+.content{
+    height: 200px;
+    border: 1px solid black;
+    background-color: bisque;
+}
+
+.rowcontent{
+    height: 500px;
+}
