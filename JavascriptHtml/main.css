@@ -1,0 +1,36 @@
+.contenedor{
+    height: 200px;
+    width: 500px;
+    background-color:azure;
+    border:1px solid black
+
+
+}
+
+.contenedorRojo{
+    background-color: brown;
+}
+.contenedorAzul{
+    background-color: cornflowerblue;
+}
+.input-nombre{
+    width:60% !important;
+
+    margin:10px
+}
+.persona{
+    margin: 10px;
+    color: navy;
+    size: 20px;
+    padding: 13px;
+    padding-bottom: 1px;
+    border-radius: 20px;
+    border: 1px solid black;
+    width: 50%;
+}
+.nombres-container{
+    display: block;
+    margin: 10px;
+    padding: 10px;
+
+}
