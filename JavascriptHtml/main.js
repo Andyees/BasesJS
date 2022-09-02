@@ -18,12 +18,73 @@ let htmlLista=` <ul>
 
 </ul>
 `
+let buttonDelete=document.getElementById("buttonEliminar")
+
+
 
 window.addEventListener("load",LoadPage,false)
 button.addEventListener("click",CambiarColor,false)
 Input_nombre.addEventListener("keyup",CambiarColor,false)
-Input_nombre.addEventListener("keyup",TypeMirror,false)
 button.addEventListener("click",GuardarLocalStorage,true)
+buttonDelete.addEventListener("click",EliminarLocalStorage,false)
+
+
+
+
+
+function Eliminar(value){
+
+ let cedula=value
+  localStorage.removeItem(cedula)
+  FlagEncontrado=true
+  alert("Se ha eliminado el elemento")
+  LoadPage()
+
+    
+
+}
+
+function cargarRenderizado(){
+buttonDelete2=document.querySelectorAll(".buttonElement")
+for (let index = 0; index < buttonDelete2.length; index++) {
+    buttonDelete2[index].addEventListener("click",()=>{Eliminar(buttonDelete2[index].value)},false)
+}
+//
+
+
+}
+
+
+function EliminarLocalStorage(){
+ 
+    let cedula =Input_cedula.value
+    if(cedula==null || cedula==""){
+
+        alert("ingrese un valor en el campo cedula ")
+    }
+
+    else{
+
+        let FlagEncontrado=false
+        for (let index = 0; index < localStorage.length; index++) {
+
+            if(localStorage.key(index)==cedula ){
+              
+            }
+        }
+        if(FlagEncontrado){
+            alert("Se ha eliminado el elemento")
+        }
+        else{
+
+            alert("El elemento no se encuentra en localstorage")
+        }
+
+        
+        LoadPage()
+    }
+
+}
 
 
 function GuardarLocalStorage()
@@ -32,41 +93,33 @@ function GuardarLocalStorage()
 let nombre = Input_nombre.value
 let apellido =Input_apellido.value
 let cedula =Input_cedula.value
-let contenido = `<div class="persona"><p class="" id="nombre_view">${nombre+" "+apellido+" "+cedula} </p> </div>`
-containerNames.innerHTML+=contenido
 const persona={nombre:nombre,apellido:apellido,cedula:cedula}
 localStorage.setItem(cedula, JSON.stringify(persona));
+LoadPage()
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function LoadPage(){
-
+containerNames.innerHTML=""
 for (let index = 0; index < localStorage.length; index++) {
 let clave=localStorage.key(index)
 let persona=JSON.parse(localStorage.getItem(clave))
-let contenido = `<div class="persona"><p class="" id="nombre_view">${persona.nombre+" "+persona.apellido+" "+persona.cedula} </p> </div>`    
+let contenido = `<div class="persona"><p class="${clave}" id="nombre_view">${persona.nombre+" "+persona.apellido+" "+persona.cedula} </p> <button id="" value="${clave}" class="btn btn-danger buttonElement">Delete</button> </div>`    
 containerNames.innerHTML+=contenido
+Input_apellido.value=""
+Input_nombre.value=""
+Input_cedula.value=""
+
+
+
 }
 
 setTimeout(()=>{
     container.style.backgroundColor="red"
     
 },2000)
+
+
+setTimeout(()=>{cargarRenderizado()},500)
     
 }
 
@@ -80,28 +133,29 @@ function CambiarColor(){
     finalcode=finalcode+colorCode[Math.floor(Math.random()*16)]
     }
     container.style.backgroundColor=finalcode
-    
+   setTimeout(()=>{cargarRenderizado()},2000 )
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 function hidden(){
     container.style.display="none"
 }
-
-function TypeMirror(){
-
-
-title.innerText= Entrada.value    
-
-
-}
-
-
-
-
-
-
-
-
 
 function addText(element,texto){
     setTimeout(()=>{
@@ -153,6 +207,8 @@ setTimeout(()=>{
 // addClass(container,"contenedorRojo")
 
 // let lista=document.createElement(htmlLista)
+
+
 
 
 
