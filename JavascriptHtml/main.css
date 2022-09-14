@@ -40,3 +40,16 @@
   border-radius: 20px;
   margin-bottom: 10px;
 }
+tr{
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+    height: 100px;
+    width: 100px; 
+}
+table{
+    background-color: green;
+}
